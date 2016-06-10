@@ -32,6 +32,12 @@ define U-Boot/at91sam9x5ek_nandflash
   BUILD_DEVICES:=at91sam9g15ek at91sam9g25ek at91sam9g35ek at91sam9x25ek at91sam9x35ek
 endef
 
+define U-Boot/wb45n
+  NAME:=Laird WB45N module
+  BUILD_SUBTARGET:=legacy
+  BUILD_DEVICES:=wb45n
+endef
+
 define U-Boot/sama5d3_xplained_nandflash
   NAME:=SAMA5D3 Xplained board (NandFlash)
   BUILD_SUBTARGET:=sama5
@@ -83,7 +89,8 @@ UBOOT_TARGETS := \
 	sama5d2_xplained_spiflash \
 	sama5d4_xplained_mmc \
 	sama5d4_xplained_spiflash \
-	sama5d4_xplained_nandflash
+	sama5d4_xplained_nandflash \
+	wb45n
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
