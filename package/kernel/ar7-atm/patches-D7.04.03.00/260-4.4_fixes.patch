@@ -1,0 +1,38 @@
+--- a/tn7sar.c
++++ b/tn7sar.c
+@@ -1467,7 +1467,7 @@ static int tn7sar_proc_sar_stat(struct s
+ {
+   struct atm_dev *dev;
+   Tn7AtmPrivate *priv;
+-  int i, j, k;
++  int i, j;
+   int stat_len;
+   char statString[32];
+   unsigned int *pStateBase, *pSarStat;
+@@ -1486,7 +1486,6 @@ static int tn7sar_proc_sar_stat(struct s
+     if(priv->lut[i].inuse)
+     {
+       seq_printf(m, "\nChannel %d:\n",priv->lut[i].chanid);
+-      k=0;
+       for(j=0;j<4;j++)
+       {
+         stat_len =sprintf(statString, "Stats;%d;%d", j,priv->lut[i].chanid);
+@@ -1499,16 +1498,10 @@ static int tn7sar_proc_sar_stat(struct s
+           if((char *)*pSarStat == NULL)
+             break;
+ 
+-          k += seq_printf(m, "%s: ",(char *) *pSarStat);
++          seq_printf(m, "%s: ",(char *) *pSarStat);
+           pSarStat++;
+-          k += seq_printf(m, "%s;  \n",(char *) *pSarStat);
++          seq_printf(m, "%s;  \n",(char *) *pSarStat);
+           pSarStat++;
+-
+-          if(k > 60)
+-          {
+-            k=0;
+-            seq_printf(m, "\n");
+-          }
+         }
+ 
+         kfree(pStateBase);
