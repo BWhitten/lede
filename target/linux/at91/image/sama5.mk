@@ -43,3 +43,14 @@ define Device/wb50n
   MKUBIFS_OPTS := -m $$(PAGESIZE) -e 124KiB -c 955
 endef
 TARGET_DEVICES += wb50n
+
+define Device/gatwick
+  $(Device/evaluation-fit)
+  DEVICE_TITLE := Laird RG1xx
+  DEVICE_PACKAGES := kmod-mmc-at91
+  BLOCKSIZE := 128k
+  PAGESIZE := 2048
+  SUBPAGESIZE := 2048
+  MKUBIFS_OPTS := -m $$(PAGESIZE) -e 124KiB -c 955
+endef
+TARGET_DEVICES += gatwick
