@@ -2,12 +2,14 @@ language: c
 branches:
     only:
         - travis
-install:
+before_install:
     - sudo apt-get -qq update
+install:
     - sudo apt-get install -y subversion g++ zlib1g-dev build-essential git python rsync man-db
     - sudo apt-get install -y libncurses5-dev gawk gettext unzip file libssl-dev wget
 before_script:
     - printf 'CONFIG_TARGET_at91=y\nCONFIG_TARGET_at91_sama5d3=y\n' >> .config
     - make defconfig
 script:
-    - make
+    - make download -j 10
+    - make -j 3 V=s
