@@ -79,7 +79,7 @@ Signed-off-by: Benjamin Poirier <bpoirier@suse.com>
  /**
 --- a/drivers/net/ethernet/intel/e1000e/netdev.c
 +++ b/drivers/net/ethernet/intel/e1000e/netdev.c
-@@ -5056,7 +5056,7 @@ static bool e1000e_has_link(struct e1000
+@@ -5081,7 +5081,7 @@ static bool e1000e_has_link(struct e1000
  	case e1000_media_type_copper:
  		if (hw->mac.get_link_status) {
  			ret_val = hw->mac.ops.check_for_link(hw);
